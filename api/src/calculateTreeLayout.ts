@@ -1,5 +1,3 @@
-import { Edge } from 'reactflow';
-
 // calculateTreeLayout.ts
 export const calculateTreeLayout = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,14 +9,10 @@ export const calculateTreeLayout = (
 ) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const newNodes: any[] = [];
-  const newEdges: Edge[] = [];
+  const newEdges: any[] = [];
 
   const ySpacing = 150;
   const xSpacing = 200;
-
-  const getLabel = (id: string): string => {
-    return id.split('=').pop() || id;
-  };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getSubtreeWidth = (node: any): number => {
@@ -37,7 +31,7 @@ export const calculateTreeLayout = (
 
   newNodes.push({
     id: currentId,
-    data: { label: parentId === null ? 'Root' : getLabel(currentId) },
+    data: { label: parentId === null ? 'Root' : currentId },
     position: { x: nodeX, y: nodeY },
     style: { width: 100, padding: '10px', textAlign: 'center' },
   });
