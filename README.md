@@ -206,20 +206,49 @@ As part of this technical test for a Frontend Developer position, you are expect
 1. **How did you approach the development of the frontend visualization?**  
    Describe how you managed the complexity of rendering dynamic JSON data and ensuring the user interface is clear and efficient. What libraries or techniques did you use to make this process scalable?
 
+   **Response:** To approach the development of the frontend visualization, the initial idea was to create two independent components: one for the user to input the JSON data and another to render the JSON visualizer.
+
+   The first component is responsible for validating the input to ensure that the JSON data is correct before making any API requests. This validation step ensures that only valid data is processed.
+
+   The second component receives the valid JSON data as state and passes the necessary props to the React Flow library, which is used to render the JSON visualizer.
+
+   This approach ensures clarity and efficiency in the user interface by validating the data upfront and using React Flow to manage the visualization in a structured way.
+
 2. **What challenges did you face during the development process, and how did you overcome them?**  
    Discuss any obstacles you encountered while working with React, React Flow, Tailwind CSS, or the API integration, and explain how you solved them.
 
+    **Response:** One of the main challenges I faced during the development process was working with the React Flow library. Initially, everything seemed straightforward as I followed the steps outlined in the official documentation. However, when I attempted to create a custom node to implement hover effects and other interactions required by the task, I encountered an issue where the edges (lines connecting nodes) failed to render.
+
+    This issue occurred because, after changing the node type to the custom one I had created, the references needed to generate the edges were lost. After spending some time troubleshooting, I decided to pivot and not use a custom node. Unfortunately, this meant I wasn't able to implement some of the required functionalities, such as the requested hover effects and interactions.
+
 3. **How did you ensure that your solution can scale with larger datasets?**  
    What steps did you take to ensure the application remains performant and manageable as the size of the JSON data grows? Did you consider optimizations such as lazy loading, memoization, or virtualized rendering?
+    
+
+    **Response:** To ensure that the solution can scale with larger datasets, I focused on separating the functionalities, which helps make the code more readable and easier to optimize. While there is room for improvement, this approach provides a solid foundation for future scalability.
+
+    For performance, when dealing with large JSON files, I considered implementing lazy loading. This way, the data is only fetched and rendered based on the user's position on the canvas, reducing the load on the system and improving responsiveness.
+
+    Additionally, validating the JSON before making the API request is a small but important detail. It ensures that only valid data is processed, minimizing unnecessary API calls and enhancing the overall efficiency of the application.
 
 4. **What strategies did you implement to enhance interactivity and the user experience?**  
    How did you make the visualization interactive, and what user interface patterns or features did you use to improve the overall user experience?
 
+    **Response:** I focused on making the interface both functional and intuitive. The input field provides clear feedback to the user, indicating when the entered value is incorrect or when they can proceed to execute the JSON visualizer. Additionally, the interface is fully responsive, ensuring a seamless experience across various devices.
+
+    Functions like clearing the input and enabling drag-and-drop interactions are part of the library, so it was simply a matter of passing the necessary props to the component to enable those features.
+
 5. **How would you improve the app’s scalability and performance for future updates or features?**  
    If this project were to evolve or handle even larger and more complex datasets, how would you approach enhancing its scalability and performance?
+    
+    **Response:** To improve scalability and performance for larger and more complex datasets, I would focus on optimizing the code by refactoring it for better modularity and leveraging TypeScript for maintainability. Implementing efficient state management solutions like Redux or Zustand would help manage more complex states.
 
 6. **How did you identify and resolve the hidden bug in the API on the frontend side?**  
    Describe the process you used to identify the bug, how it impacted the data visualization, and how you fixed it within the frontend code.
+
+    **Response:** To identify and resolve the hidden bug in the API on the frontend side, I initially observed two issues in the API response. The first was related to the width in the styles, as some text was overflowing beyond the container, causing layout issues and impacting the data visualization. The second issue, which may not have been a bug, was related to the labels of each node.
+
+    To address these issues, I formatted each node upon receiving the API response. This allowed me to apply the correct styles to the containers and ensure that the labels were properly formatted and displayed within the nodes. This solution improved the overall layout and user experience.
 
 ---
 
